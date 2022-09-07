@@ -14,7 +14,7 @@ public class Alarm : MonoBehaviour
     private void OnEnable()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.volume = 0;
+        _audioSource.volume = minVolume;
     }
 
     public void TurnOnOff(bool state)
