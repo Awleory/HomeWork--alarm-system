@@ -132,7 +132,7 @@ public class MoveController : MonoBehaviour
         _animator.SetFloat("speed", Mathf.Abs(_velocity.x));
         _animator.SetBool("jumped", _jumped);
 
-        if (_spriteRenderer.flipX == false && _velocity.x < -0.001 || _spriteRenderer.flipX && _velocity.x > 0.001)
+        if (_spriteRenderer.flipX == false && _velocity.x < -_minMoveDistance || _spriteRenderer.flipX && _velocity.x > _minMoveDistance)
         {
             _spriteRenderer.flipX = !_spriteRenderer.flipX;
         }
