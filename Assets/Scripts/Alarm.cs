@@ -8,6 +8,8 @@ public class Alarm : MonoBehaviour
 
     private AudioSource _audioSource;
     private Coroutine _currentCoroutine;
+    private float maxVolume = 1;
+    private float minVolume = 0;
 
     private void OnEnable()
     {
@@ -27,11 +29,11 @@ public class Alarm : MonoBehaviour
     private IEnumerator ChangeVolumeSmoothly(bool toUp)
     {
         float deltaRate = 1 / spendTimeToMaxVolume;
-        float targetValue = 0;
+        float targetValue = minVolume;
 
         if (toUp)
         {
-            targetValue = 1f;
+            targetValue = maxVolume;
 
             if (_audioSource.isPlaying == false)
             {
@@ -45,7 +47,7 @@ public class Alarm : MonoBehaviour
             yield return null;
         }
 
-        if (toUp == false && _audioSource.volume == 0f)
+        if (toUp == false && _audioSource.volume == minVolume)
         {
             _audioSource.Stop();
         }
